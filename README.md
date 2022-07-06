@@ -7,6 +7,7 @@ This test is a part of our hiring process and should take you between 3 and 6 ho
 The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure...).
 
 The app will have two different components:
+
 - **Activity Feed** - simple list of calls
 - **Activity Detail** - detail of a call
 
@@ -58,9 +59,11 @@ As you can see, it's hosted on a free Heroku server, which means that the first 
 - **call_type** - can be a `missed`, `answered` or `voicemail` call.
 
 
+## Code Submit
+Please organize, design, test and document your code as if it were going into production. Fork this repository and send us a pull request. We will review it and get back to you in order to talk about your code! 
 
-## Submission
+Contact us at hr@turingtechnologies.org if you need more details. 
 
-Fork this repository and send us a pull request. We'll review it and get back to you in order to talk about your code!
+__Feel free to apply! Drop us a line with your Linkedin/Github/AnySocialProfileWhereYouAreActive at hr@turingtechnologies.org__
 
-Contact us at jobs@aircall.io if you need more details.
+All the best and happy coding.
