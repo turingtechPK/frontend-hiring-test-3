@@ -12,11 +12,9 @@ The app will have two different components:
 
 Show us what you can do in 6 hours top :) 
 
-**Bonus:** the final user should be able to archive a call. The call will no longer be displayed on the Activity Feed. Please code that only if you have extra time.
-
+**Bonus:** the final user should be able to archive a call. The call will no longer be displayed on the Activity Feed.
 
 To give you an idea, here what our app looks like:
-
 
 ![app](https://user-images.githubusercontent.com/630714/29357034-763d7216-8276-11e7-8bcb-e77d9645dfcc.png)
 
