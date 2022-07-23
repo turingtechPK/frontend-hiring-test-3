@@ -13,4 +13,14 @@ const getRequest = async (endPoint) => {
     }
 }
 
-export { getRequest }
+const postRequest = async (endPoint, body) => {
+    try {
+        const data = await axios.post(`${serverURL}${endPoint}`, body)
+        return data
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+export { getRequest, postRequest }

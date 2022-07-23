@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getRequest } from '../../apis'
+import { getRequest, postRequest } from '../../apis'
 import { ENDPOINTS } from '../../apis/endpoints'
 import { BsFillTelephoneInboundFill, BsFillTelephoneOutboundFill, BsArchiveFill, BsFillEyeFill } from "react-icons/bs"
 import { BiReset } from 'react-icons/bi'
@@ -19,17 +19,10 @@ const Activity = () => {
     async function getActivityList() {
         try {
             const URL = ENDPOINTS.getActivities
-            const { data, status } = await getRequest(URL)
+            let { data, status } = await getRequest(URL)
             // console.log(data, status)
+            data = data.filter((element) => !element.is_archived) // filter the is archived logs
             if (status === 200) setActivityData(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const archiveAllCalls = () => {
-        try {
-        
         } catch (error) {
             console.log(error)
         }
@@ -47,17 +40,28 @@ const Activity = () => {
     }
 
     const archiveCall = async (callID) => {
-        
+        try {
+            let URL = ENDPOINTS.updateCall
+            URL = URL.replace(':id', callID)
+            let body = {
+                is_archived: true
+            }
+            const { data, status } = await postRequest(URL, body)
+            // console.log(data, status)
+            if (status === 200) getActivityList()
+        } catch (error) {
+            console.log(error)
+        }
     }    
 
     return (
         <div>
             <h4 className='heading'>Activity Logs</h4>
             <div className='actionBtnBlock'>
-                <button className='archiveBtn actionBtn' onClick={() => archiveAllCalls()}>
+                {/* <button className='archiveBtn actionBtn' onClick={() => archiveAllCalls()}>
                     <BsArchiveFill />
                     Archive All Calls
-                </button>
+                </button> */}
                 <button className='resetBtn actionBtn' onClick={() => resetCalls()}>
                     <BiReset />
                     Reset
