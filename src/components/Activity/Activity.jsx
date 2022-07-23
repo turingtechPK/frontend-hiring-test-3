@@ -69,7 +69,10 @@ const Activity = () => {
             </div>
             { activityData.map((activity) => {
                 return (
-                    <div key={activity.id} className='card'>
+                    <div key={activity.id} className='card' onClick={() => {
+                        localStorage.setItem('callID', activity.id)
+                        navigate(`/${activity.id}`)
+                    }}>
                         { activity.direction === 'inbound' ? (
                             <BsFillTelephoneInboundFill />
                         ) : (
