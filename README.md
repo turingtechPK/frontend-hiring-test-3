@@ -67,3 +67,5 @@ Contact us at hr@turingtechnologies.org if you need more details.
 __Feel free to apply! Drop us a line with your Linkedin/Github/AnySocialProfileWhereYouAreActive at hr@turingtechnologies.org__
 
 All the best and happy coding.
+
+Demo Video - https://www.loom.com/share/9add84925dd149ea82f07a93308ba02a
