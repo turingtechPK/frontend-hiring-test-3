@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { getRequest } from '../apis'
-import { ENDPOINTS } from '../apis/endpoints'
+import { getRequest } from '../../apis'
+import { ENDPOINTS } from '../../apis/endpoints'
 import { BsFillTelephoneInboundFill, BsFillTelephoneOutboundFill } from "react-icons/bs";
 import moment from 'moment'
 import './Activity.css'
@@ -26,6 +26,7 @@ const Activity = () => {
 
     return (
         <div>
+            <h4 className='heading'>Activity Logs</h4>
             { activityData.map((activity) => {
                 return (
                     <div key={activity.id} className='card'>
@@ -40,7 +41,7 @@ const Activity = () => {
                                 <p className='text callName'>Caller: {activity.from}</p>
                             </div>
                             <div>
-                                <p>{ moment(activity.created_at).format('HH:mm a') }</p>
+                                <p className='text callTime'>{ moment(activity.created_at).format('hh:mm a') }</p>
                             </div>
                         </div>
                     </div>
