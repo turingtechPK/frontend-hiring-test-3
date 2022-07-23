@@ -55,6 +55,47 @@ const Activity = () => {
         }
     }    
 
+    const activityFeed = activityData.map((activity) => {
+        return (
+            <div key={activity.id} className='card' onClick={() => {
+                localStorage.setItem('callID', activity.id)
+                navigate(`/${activity.id}`)
+            }}>
+                { activity.direction === 'inbound' ? (
+                    <HiPhoneIncoming style={{ width: '24px', height: '35px'}} />
+                ) : (
+                    <HiPhoneOutgoing style={{ width: '24px', height: '35px'}} />
+                )}
+                <div className='details'>
+                    <div>
+                        <p className='text callNumber'>{activity.to}</p>
+                        <p className='text callName'>Caller: {activity.from}</p>
+                        <p className='text callName callView' style={{ paddingTop: '1rem' }}
+                            onClick={() => {
+                                localStorage.setItem('callID', activity.id)
+                                navigate(`/${activity.id}`)
+                            }}>
+                            View Details <BsArrowRightShort style={{ verticalAlign: 'middle' }} />
+                        </p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center'}}>
+                        <p className='text callTime'>{ moment(activity.created_at).format('hh:mm a') }</p>
+                        <HiOutlineArchive onClick={(e) => {
+                            archiveCall(activity.id)
+                            e.stopPropagation()
+                        }} />
+                        {/* <BsFillEyeFill 
+                            onClick={() => {
+                                localStorage.setItem('callID', activity.id)
+                                navigate(`/${activity.id}`)
+                            }} 
+                        /> */}
+                    </div>
+                </div>
+            </div>
+        )
+    })
+
     return (
         <div>
             <h4 className='heading'>Activity Logs</h4>
@@ -68,46 +109,7 @@ const Activity = () => {
                     Reset
                 </button>
             </div>
-            { activityData.map((activity) => {
-                return (
-                    <div key={activity.id} className='card' onClick={() => {
-                        localStorage.setItem('callID', activity.id)
-                        navigate(`/${activity.id}`)
-                    }}>
-                        { activity.direction === 'inbound' ? (
-                            <HiPhoneIncoming style={{ width: '24px', height: '35px'}} />
-                        ) : (
-                            <HiPhoneOutgoing style={{ width: '24px', height: '35px'}} />
-                        )}
-                        <div className='details'>
-                            <div>
-                                <p className='text callNumber'>{activity.to}</p>
-                                <p className='text callName'>Caller: {activity.from}</p>
-                                <p className='text callName callView' style={{ paddingTop: '1rem' }}
-                                    onClick={() => {
-                                        localStorage.setItem('callID', activity.id)
-                                        navigate(`/${activity.id}`)
-                                    }}>
-                                    View Details <BsArrowRightShort style={{ verticalAlign: 'middle' }} />
-                                </p>
-                            </div>
-                            <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center'}}>
-                                <p className='text callTime'>{ moment(activity.created_at).format('hh:mm a') }</p>
-                                <HiOutlineArchive onClick={(e) => {
-                                    archiveCall(activity.id)
-                                    e.stopPropagation()
-                                }} />
-                                {/* <BsFillEyeFill 
-                                    onClick={() => {
-                                        localStorage.setItem('callID', activity.id)
-                                        navigate(`/${activity.id}`)
-                                    }} 
-                                /> */}
-                            </div>
-                        </div>
-                    </div>
-                )
-            }) }
+            { activityData.length ? activityFeed : <p style={{ display: 'flex', margin: '1rem auto', justifyContent: 'center', width: '50%' }}>No Logs Found</p> }
         </div>
     )
 }
