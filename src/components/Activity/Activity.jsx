@@ -93,7 +93,10 @@ const Activity = () => {
                             </div>
                             <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center'}}>
                                 <p className='text callTime'>{ moment(activity.created_at).format('hh:mm a') }</p>
-                                <HiOutlineArchive onClick={() => archiveCall(activity.id)} />
+                                <HiOutlineArchive onClick={(e) => {
+                                    archiveCall(activity.id)
+                                    e.stopPropagation()
+                                }} />
                                 {/* <BsFillEyeFill 
                                     onClick={() => {
                                         localStorage.setItem('callID', activity.id)

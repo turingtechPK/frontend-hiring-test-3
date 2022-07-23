@@ -23,7 +23,7 @@ const CallDetails = () => {
             let URL = ENDPOINTS.getCallDetails
             URL = URL.replace(':id', params.callID)
             const { data, status } = await getRequest(URL)
-            console.log(data, status)
+            // console.log(data, status)
             if (status === 200) setCallData(data)
         } catch (error) {
             console.log(error)
