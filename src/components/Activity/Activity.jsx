@@ -62,7 +62,7 @@ const Activity = () => {
                     <BsArchiveFill />
                     Archive All Calls
                 </button> */}
-                <button className='resetBtn actionBtn' onClick={() => resetCalls()}>
+                <button className='resetBtn actionBtn' onClick={() => resetCalls()} style={{ cursor: 'pointer' }}>
                     <BiReset />
                     Reset
                 </button>

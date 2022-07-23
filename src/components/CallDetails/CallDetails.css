@@ -1,0 +1,48 @@
+.heading {
+    font-size: 24px;
+    text-align: center;
+    color: #06335e;
+}
+
+.callCard {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    border: 1px solid #06335e;
+    border-radius: 8px;
+    width: 75%;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.actionBlock {
+    display: flex;
+    gap: .75rem;
+}
+
+.call-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.call-detail-block {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    flex-basis: 32%;
+}
+
+.label {
+    color: #9F9F9F;
+    font-size: 16px;
+    margin: 0rem;
+}
+
+.value {
+    color: #06335e;
+    font-size: 18px;
+    text-transform: capitalize;
+}
