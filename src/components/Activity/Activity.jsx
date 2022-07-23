@@ -29,6 +29,21 @@ const Activity = () => {
         }
     }
 
+    const archiveAllCalls = () => {
+        const promies = []
+        activityData.forEach((item) => {
+            promies.push(archiveCall(item.id, true))
+        })
+
+        Promise.all(promies)
+            .then((res) => {
+                getActivityList()
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+
     const resetCalls = async () => {
         try {
             const URL = ENDPOINTS.resetCalls
@@ -40,7 +55,7 @@ const Activity = () => {
         }
     }
 
-    const archiveCall = async (callID) => {
+    const archiveCall = async (callID, type = false) => {
         try {
             let URL = ENDPOINTS.updateCall
             URL = URL.replace(':id', callID)
@@ -49,7 +64,7 @@ const Activity = () => {
             }
             const { data, status } = await postRequest(URL, body)
             // console.log(data, status)
-            if (status === 200) getActivityList()
+            if (status === 200 && !type) getActivityList()
         } catch (error) {
             console.log(error)
         }
@@ -100,10 +115,10 @@ const Activity = () => {
         <div>
             <h4 className='heading'>Activity Feed</h4>
             <div className='actionBtnBlock'>
-                {/* <button className='archiveBtn actionBtn' onClick={() => archiveAllCalls()}>
-                    <BsArchiveFill />
+                <button className='archiveBtn actionBtn' onClick={() => archiveAllCalls()}>
+                    <HiOutlineArchive />
                     Archive All Calls
-                </button> */}
+                </button>
                 <button className='resetBtn actionBtn' onClick={() => resetCalls()} style={{ cursor: 'pointer' }}>
                     <BiReset />
                     Reset
