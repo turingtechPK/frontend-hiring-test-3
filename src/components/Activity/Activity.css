@@ -2,10 +2,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 0.5rem 1rem;
     border: 1px solid #06335e;
     border-radius: 8px;
+    width: 50%;
 }
 
 .heading {
@@ -42,4 +43,32 @@
 
 .card:hover .callNumber, .card:hover .callTime, .card:hover svg {
     color: white;
+}
+
+.actionBtnBlock {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.actionBtn {
+    display: flex;
+    padding: .5rem;
+    gap: .25rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+}
+
+.archiveBtn {
+    background-color: #06335e;
+    color: white;
+}
+
+.resetBtn {
+    background-color: #CBCBCB;
+    color: #06335e;
 }
