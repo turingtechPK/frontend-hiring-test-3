@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { getRequest, postRequest } from '../../apis'
 import { ENDPOINTS } from '../../apis/endpoints'
-import { BsFillTelephoneInboundFill, BsFillTelephoneOutboundFill, BsArchiveFill, BsFillEyeFill } from "react-icons/bs"
+import { BsArrowRightShort } from "react-icons/bs"
 import { BiReset } from 'react-icons/bi'
 import moment from 'moment'
 import './Activity.css'
 import { useNavigate } from 'react-router-dom'
+import { HiPhoneIncoming, HiPhoneOutgoing, HiOutlineArchive } from 'react-icons/hi'
 
 const Activity = () => {
     const [activityData, setActivityData] = useState([])
@@ -74,24 +75,31 @@ const Activity = () => {
                         navigate(`/${activity.id}`)
                     }}>
                         { activity.direction === 'inbound' ? (
-                            <BsFillTelephoneInboundFill />
+                            <HiPhoneIncoming style={{ width: '24px', height: '35px'}} />
                         ) : (
-                            <BsFillTelephoneOutboundFill />
+                            <HiPhoneOutgoing style={{ width: '24px', height: '35px'}} />
                         )}
                         <div className='details'>
                             <div>
                                 <p className='text callNumber'>{activity.to}</p>
                                 <p className='text callName'>Caller: {activity.from}</p>
+                                <p className='text callName callView' style={{ paddingTop: '1rem' }}
+                                    onClick={() => {
+                                        localStorage.setItem('callID', activity.id)
+                                        navigate(`/${activity.id}`)
+                                    }}>
+                                    View Details <BsArrowRightShort style={{ verticalAlign: 'middle' }} />
+                                </p>
                             </div>
                             <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center'}}>
                                 <p className='text callTime'>{ moment(activity.created_at).format('hh:mm a') }</p>
-                                <BsArchiveFill onClick={() => archiveCall(activity.id)} />
-                                <BsFillEyeFill 
+                                <HiOutlineArchive onClick={() => archiveCall(activity.id)} />
+                                {/* <BsFillEyeFill 
                                     onClick={() => {
                                         localStorage.setItem('callID', activity.id)
                                         navigate(`/${activity.id}`)
                                     }} 
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>

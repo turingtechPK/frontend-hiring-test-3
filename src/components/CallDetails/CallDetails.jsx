@@ -3,9 +3,10 @@ import './CallDetails.css'
 import { ENDPOINTS } from '../../apis/endpoints'
 import { getRequest, postRequest } from '../../apis'
 import { useParams } from 'react-router-dom'
-import { BsArchiveFill, BsArrowLeft } from 'react-icons/bs'
+import { BsArrowLeft } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import moment from 'moment'
+import { HiOutlineArchive } from 'react-icons/hi'
 
 const CallDetails = () => {
     const [callData, setCallData] = useState('')
@@ -85,7 +86,7 @@ const CallDetails = () => {
                     </div>
 
                     <div className='call-detail-block'>
-                        <p className='label'>Is Archived: </p>
+                        <p className='label'>Archived: </p>
                         <span className='value'>{callData.is_archived ? 'True' : 'False'}</span>
                     </div>
                 </div>
@@ -96,7 +97,7 @@ const CallDetails = () => {
                         Go Back
                     </button>
                     <button className='archiveBtn actionBtn' onClick={() => archiveCall(callData.id)} style={{ cursor: 'pointer' }}>
-                        <BsArchiveFill />
+                        <HiOutlineArchive />
                         Archive Call
                     </button>
                 </div>
