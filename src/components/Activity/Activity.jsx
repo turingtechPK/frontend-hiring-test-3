@@ -98,7 +98,7 @@ const Activity = () => {
 
     return (
         <div>
-            <h4 className='heading'>Activity Logs</h4>
+            <h4 className='heading'>Activity Feed</h4>
             <div className='actionBtnBlock'>
                 {/* <button className='archiveBtn actionBtn' onClick={() => archiveAllCalls()}>
                     <BsArchiveFill />
